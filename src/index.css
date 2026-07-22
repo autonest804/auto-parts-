@@ -1,0 +1,79 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+
+  /* Redefine slate-900 to match the exact primary brand blue! */
+  --color-slate-900: #0056D2; 
+  /* Redefine slate-950 for background of cards in the login screen, etc. */
+  --color-slate-950: #001A42; 
+  /* Redefine slate-850, slate-800 for dark blue subcomponents and borders */
+  --color-slate-850: #0042A3;
+  --color-slate-800: #003380;
+  
+  /* Redefine indigo palette to be the same premium brand blue! */
+  --color-indigo-50: #EFF6FF;
+  --color-indigo-100: #DBEAFE;
+  --color-indigo-200: #BFDBFE;
+  --color-indigo-300: #93C5FD;
+  --color-indigo-400: #60A5FA;
+  --color-indigo-500: #3B82F6;
+  --color-indigo-600: #0056D2; /* Exact Premium Brand Blue */
+  --color-indigo-700: #0042A3;
+  --color-indigo-800: #002E73;
+  --color-indigo-900: #001F5C;
+  --color-indigo-950: #000D21;
+}
+
+/* Lock html, body, and root to a rigid viewport to disable browser-style page zoom and elastic scrolling */
+html,
+body,
+#root {
+  margin: 0;
+  padding: 0;
+  width: 100vw;
+  width: 100dvw;
+  height: 100vh;
+  height: 100dvh;
+  overflow: hidden !important;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  /* Disable double-tap/pinch-to-zoom natively but keep standard panning/scrolling gestures active on child containers */
+  touch-action: manipulation;
+  /* Disable accidental text selection/copying on general native app controls/labels */
+  -webkit-user-select: none;
+  user-select: none;
+  /* Remove highlight on touch for mobile browsers */
+  -webkit-tap-highlight-color: transparent;
+  background-color: #f8fafc; /* Tailwind slate-50 background for consistent native canvas */
+}
+
+/* Ensure that input fields, textareas, and editable areas remain selectable and function perfectly */
+input,
+textarea,
+[contenteditable="true"] {
+  -webkit-user-select: text !important;
+  user-select: text !important;
+}
+
+/* Allow scrolling in scrollable container elements */
+.overflow-y-auto,
+.overflow-x-auto,
+.overflow-auto {
+  -webkit-overflow-scrolling: touch; /* smooth momentum scrolling on iOS */
+}
+
+/* Allow multi-touch actions in leaflet maps and photo zoom view explicitly */
+#openstreetmap-container,
+.leaflet-container,
+.leaflet-pane,
+.custom-leaflet-marker,
+#image-zoom-container,
+.image-zoom-element {
+  touch-action: none !important; /* Let map/photo scripts handle pinch/drag/zoom directly */
+}
+
